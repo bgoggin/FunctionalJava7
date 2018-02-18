@@ -21,10 +21,10 @@ public class CustomerHigherOrder {
     // enabled note distinction between getField and
     // getEnabledCustomerField
 
-    public static <B> List<B> getField(Function1<Customer, Boolean> test,
-                                       Function1<Customer,B> func) {
+    public static <B> List<B> getField(Function1<CustomerHigherOrder, Boolean> test,
+                                       Function1<CustomerHigherOrder,B> func) {
         ArrayList<B> outlist = new ArrayList<B>();
-        for(Customer customer:Customer.allCustomers) {
+        for(CustomerHigherOrder customer:CustomerHigherOrder.allCustomers) {
             if(test.call(customer)) {
                 outlist.add(func.call(customer));
             }
@@ -33,18 +33,18 @@ public class CustomerHigherOrder {
     }
 
     //create 2 function variables, so anonymous class passing doesn't get crazy
-    static final public Function1<Customer, Boolean> EnabledCustomer =
-            new Function1<Customer, Boolean>()
+    static final public Function1<CustomerHigherOrder, Boolean> EnabledCustomer =
+            new Function1<CustomerHigherOrder, Boolean>()
             {
-                public Boolean call(Customer customer) {
+                public Boolean call(CustomerHigherOrder customer) {
                     return customer.enabled = true;
                 }
             };
 
-    static final public Function1<Customer, Boolean> DisabledCustomer =
-            new Function1<Customer, Boolean>()
+    static final public Function1<CustomerHigherOrder, Boolean> DisabledCustomer =
+            new Function1<CustomerHigherOrder, Boolean>()
             {
-                public Boolean call(Customer customer) {
+                public Boolean call(CustomerHigherOrder customer) {
                     return customer.enabled = false;
                 }
             };
@@ -54,16 +54,16 @@ public class CustomerHigherOrder {
     // parameter list
     public static List<String> getDisabledCustomerNames() {
         return getField(
-                DisabledCustomer, new Function1<Customer, String>() {
-                    public String call(Customer customer) {
+                DisabledCustomer, new Function1<CustomerHigherOrder, String>() {
+                    public String call(CustomerHigherOrder customer) {
                         return customer.name;
                     }
                 });
     }
 
-    public static <B> List<B> getEnabledCustomerField(Function1<Customer, B> func) {
+    public static <B> List<B> getEnabledCustomerField(Function1<CustomerHigherOrder, B> func) {
         ArrayList<B> outlist = new ArrayList<>();
-        for (Customer customer : Customer.allCustomers) {
+        for (CustomerHigherOrder customer : CustomerHigherOrder.allCustomers) {
             if (customer.enabled) {
                 outlist.add(func.call(customer));
             }
@@ -76,8 +76,8 @@ public class CustomerHigherOrder {
     public static List<String> getEnabledCustomerNames() {
         return getEnabledCustomerField(
                 //Anonymous inner class implementing Function1
-                new Function1<Customer, String>() {
-                    public String call(Customer customer) {
+                new Function1<CustomerHigherOrder, String>() {
+                    public String call(CustomerHigherOrder customer) {
                         return customer.name;
                     }
                 });
@@ -85,8 +85,8 @@ public class CustomerHigherOrder {
 
     public static List<String> getEnabledCustomerStates() {
         return getEnabledCustomerField(
-                new Function1<Customer, String>() {
-                    public String call(Customer customer) {
+                new Function1<CustomerHigherOrder, String>() {
+                    public String call(CustomerHigherOrder customer) {
                         return customer.state;
                     }
                 });
@@ -94,8 +94,8 @@ public class CustomerHigherOrder {
 
     public static List<String> getEnabledCustomerPrimaryContacts() {
         return getEnabledCustomerField(
-                new Function1<Customer, String>() {
-                    public String call(Customer customer) {
+                new Function1<CustomerHigherOrder, String>() {
+                    public String call(CustomerHigherOrder customer) {
                         return customer.primaryContact;
                     }
                 });
@@ -103,8 +103,8 @@ public class CustomerHigherOrder {
 
     public static List<String> getEnabledCustomerDomains() {
         return getEnabledCustomerField(
-                new Function1<Customer, String>() {
-                    public String call(Customer customer) {
+                new Function1<CustomerHigherOrder, String>() {
+                    public String call(CustomerHigherOrder customer) {
                         return customer.domain;
                     }
                 });
@@ -112,17 +112,17 @@ public class CustomerHigherOrder {
 
     public static List<String> getEnabledCustomerAddresses() {
         return getEnabledCustomerField(
-                new Function1<Customer, String>() {
-                    public String call(Customer customer) {
+                new Function1<CustomerHigherOrder, String>() {
+                    public String call(CustomerHigherOrder customer) {
                         return customer.address;
                     }
                 });
     }
 
-    public static List<Customer> getEnabledCustomers() {
+    public static List<CustomerHigherOrder> getEnabledCustomers() {
         return getEnabledCustomerField(
-                new Function1<Customer, Customer>() {
-                    public Customer call(Customer customer) {
+                new Function1<CustomerHigherOrder, CustomerHigherOrder>() {
+                    public CustomerHigherOrder call(CustomerHigherOrder customer) {
                         return customer;
                     }
                 });

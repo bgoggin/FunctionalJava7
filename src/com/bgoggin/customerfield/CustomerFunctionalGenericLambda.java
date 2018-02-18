@@ -21,9 +21,9 @@ public class CustomerFunctionalGenericLambda {
     // also see first <B> in getEnabledCustomerField for how to make
     // generic. Still lots of verbosity.
 
-    public static <B> List<B> getEnabledCustomerField(Function1<Customer, B> func) {
+    public static <B> List<B> getEnabledCustomerField(Function1<CustomerFunctionalGenericLambda, B> func) {
         ArrayList<B> outlist = new ArrayList<>();
-        for (Customer customer : Customer.allCustomers) {
+        for (CustomerFunctionalGenericLambda customer : CustomerFunctionalGenericLambda.allCustomers) {
             if (customer.enabled) {
                 outlist.add(func.call(customer));
             }
@@ -36,8 +36,8 @@ public class CustomerFunctionalGenericLambda {
     public static List<String> getEnabledCustomerNames() {
         return getEnabledCustomerField(
                 //Anonymous inner class implementing Function1
-                new Function1<Customer, String>() {
-                    public String call(Customer customer) {
+                new Function1<CustomerFunctionalGenericLambda, String>() {
+                    public String call(CustomerFunctionalGenericLambda customer) {
                         return customer.name;
                     }
                 });
@@ -45,8 +45,8 @@ public class CustomerFunctionalGenericLambda {
 
     public static List<String> getEnabledCustomerStates() {
         return getEnabledCustomerField(
-                new Function1<Customer, String>() {
-                    public String call(Customer customer) {
+                new Function1<CustomerFunctionalGenericLambda, String>() {
+                    public String call(CustomerFunctionalGenericLambda customer) {
                         return customer.state;
                     }
                 });
@@ -54,8 +54,8 @@ public class CustomerFunctionalGenericLambda {
 
     public static List<String> getEnabledCustomerPrimaryContacts() {
         return getEnabledCustomerField(
-                new Function1<Customer, String>() {
-                    public String call(Customer customer) {
+                new Function1<CustomerFunctionalGenericLambda, String>() {
+                    public String call(CustomerFunctionalGenericLambda customer) {
                         return customer.primaryContact;
                     }
                 });
@@ -63,8 +63,8 @@ public class CustomerFunctionalGenericLambda {
 
     public static List<String> getEnabledCustomerDomains() {
         return getEnabledCustomerField(
-                new Function1<Customer, String>() {
-                    public String call(Customer customer) {
+                new Function1<CustomerFunctionalGenericLambda, String>() {
+                    public String call(CustomerFunctionalGenericLambda customer) {
                         return customer.domain;
                     }
                 });
@@ -72,17 +72,17 @@ public class CustomerFunctionalGenericLambda {
 
     public static List<String> getEnabledCustomerAddresses() {
         return getEnabledCustomerField(
-                new Function1<Customer, String>() {
-                    public String call(Customer customer) {
+                new Function1<CustomerFunctionalGenericLambda, String>() {
+                    public String call(CustomerFunctionalGenericLambda customer) {
                         return customer.address;
                     }
                 });
     }
 
-    public static List<Customer> getEnabledCustomers() {
+    public static List<CustomerFunctionalGenericLambda> getEnabledCustomers() {
         return getEnabledCustomerField(
-                new Function1<Customer, Customer>() {
-                    public Customer call(Customer customer) {
+                new Function1<CustomerFunctionalGenericLambda, CustomerFunctionalGenericLambda>() {
+                    public CustomerFunctionalGenericLambda call(CustomerFunctionalGenericLambda customer) {
                         return customer;
                     }
                 });

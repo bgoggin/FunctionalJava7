@@ -20,9 +20,9 @@ public class CustomerFunctionalGenericClosure {
     // prepended string to domains, demonstrates
     // how closure preserves state of instance
 
-    public static <B> List<B> getEnabledCustomerField(Function1<Customer, B> func) {
+    public static <B> List<B> getEnabledCustomerField(Function1<CustomerFunctionalGenericClosure, B> func) {
         ArrayList<B> outlist = new ArrayList<>();
-        for (Customer customer : Customer.allCustomers) {
+        for (CustomerFunctionalGenericClosure customer : CustomerFunctionalGenericClosure.allCustomers) {
             if (customer.enabled) {
                 outlist.add(func.call(customer));
             }
@@ -36,8 +36,8 @@ public class CustomerFunctionalGenericClosure {
     public static List<String> getEnabledCustomerNames() {
         return getEnabledCustomerField(
                 //Anonymous inner class implementing Function1
-                new Function1<Customer, String>() {
-                    public String call(Customer customer) {
+                new Function1<CustomerFunctionalGenericClosure, String>() {
+                    public String call(CustomerFunctionalGenericClosure customer) {
                         return customer.name;
                     }
                 });
@@ -45,8 +45,8 @@ public class CustomerFunctionalGenericClosure {
 
     public static List<String> getEnabledCustomerStates() {
         return getEnabledCustomerField(
-                new Function1<Customer, String>() {
-                    public String call(Customer customer) {
+                new Function1<CustomerFunctionalGenericClosure, String>() {
+                    public String call(CustomerFunctionalGenericClosure customer) {
                         return customer.state;
                     }
                 });
@@ -54,8 +54,8 @@ public class CustomerFunctionalGenericClosure {
 
     public static List<String> getEnabledCustomerPrimaryContacts() {
         return getEnabledCustomerField(
-                new Function1<Customer, String>() {
-                    public String call(Customer customer) {
+                new Function1<CustomerFunctionalGenericClosure, String>() {
+                    public String call(CustomerFunctionalGenericClosure customer) {
                         return customer.primaryContact;
                     }
                 });
@@ -63,8 +63,8 @@ public class CustomerFunctionalGenericClosure {
 
     public static List<String> getEnabledCustomerDomains() {
         return getEnabledCustomerField(
-                new Function1<Customer, String>() {
-                    public String call(Customer customer) {
+                new Function1<CustomerFunctionalGenericClosure, String>() {
+                    public String call(CustomerFunctionalGenericClosure customer) {
                         return customer.domain;
                     }
                 });
@@ -72,17 +72,17 @@ public class CustomerFunctionalGenericClosure {
 
     public static List<String> getEnabledCustomerAddresses() {
         return getEnabledCustomerField(
-                new Function1<Customer, String>() {
-                    public String call(Customer customer) {
+                new Function1<CustomerFunctionalGenericClosure, String>() {
+                    public String call(CustomerFunctionalGenericClosure customer) {
                         return customer.address;
                     }
                 });
     }
 
-    public static List<Customer> getEnabledCustomers() {
+    public static List<CustomerFunctionalGenericClosure> getEnabledCustomers() {
         return getEnabledCustomerField(
-                new Function1<Customer, Customer>() {
-                    public Customer call(Customer customer) {
+                new Function1<CustomerFunctionalGenericClosure, CustomerFunctionalGenericClosure>() {
+                    public CustomerFunctionalGenericClosure call(CustomerFunctionalGenericClosure customer) {
                         return customer;
                     }
                 });
@@ -93,8 +93,8 @@ public class CustomerFunctionalGenericClosure {
     // closure makes it visible
     public static List<String> getEnabledCustomerSomeoneEmail(final String someone) {
         return getEnabledCustomerField(
-                new Function1<Customer, String>() {
-                    public String call(Customer customer) {
+                new Function1<CustomerFunctionalGenericClosure, String>() {
+                    public String call(CustomerFunctionalGenericClosure customer) {
                         return someone + "@" + customer.domain;
                     }
                 });

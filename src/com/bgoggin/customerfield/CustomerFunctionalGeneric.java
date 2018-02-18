@@ -22,9 +22,9 @@ public class CustomerFunctionalGeneric {
     // also see first <B> in getEnabledCustomerField for how to make
     // generic
 
-    public static <B> List<B> getEnabledCustomerField(Function1<Customer, B> func) {
+    public static <B> List<B> getEnabledCustomerField(Function1<CustomerFunctionalGeneric, B> func) {
         ArrayList<B> outlist = new ArrayList<>();
-        for(Customer customer:Customer.allCustomers) {
+        for(CustomerFunctionalGeneric customer:CustomerFunctionalGeneric.allCustomers) {
             if(customer.enabled) {
                 outlist.add(func.call(customer));
             }
@@ -32,38 +32,38 @@ public class CustomerFunctionalGeneric {
         return outlist;
     }
 
-    static private class CustomerName implements Function1<Customer, String> {
-        public String call(Customer customer) {
+    static private class CustomerName implements Function1<CustomerFunctionalGeneric, String> {
+        public String call(CustomerFunctionalGeneric customer) {
             return customer.name;
         }
     }
 
-    static private class CustomerState implements Function1<Customer, String> {
-        public String call(Customer customer) {
+    static private class CustomerState implements Function1<CustomerFunctionalGeneric, String> {
+        public String call(CustomerFunctionalGeneric customer) {
             return customer.state;
         }
     }
 
-    static private class CustomerPrimaryContact implements Function1<Customer, String> {
-        public String call(Customer customer) {
+    static private class CustomerPrimaryContact implements Function1<CustomerFunctionalGeneric, String> {
+        public String call(CustomerFunctionalGeneric customer) {
             return customer.primaryContact;
         }
     }
 
-    static private class CustomerDomain implements Function1<Customer, String> {
-        public String call(Customer customer) {
+    static private class CustomerDomain implements Function1<CustomerFunctionalGeneric, String> {
+        public String call(CustomerFunctionalGeneric customer) {
             return customer.domain;
         }
     }
 
-    static private class CustomerAddress implements Function1<Customer, String> {
-        public String call(Customer customer) {
+    static private class CustomerAddress implements Function1<CustomerFunctionalGeneric, String> {
+        public String call(CustomerFunctionalGeneric customer) {
             return customer.address;
         }
     }
 
-    static private class CustomerAsCustomer implements Function1<Customer, Customer> {
-        public Customer call(Customer customer) { return customer;}
+    static private class CustomerAsCustomer implements Function1<CustomerFunctionalGeneric, CustomerFunctionalGeneric> {
+        public CustomerFunctionalGeneric call(CustomerFunctionalGeneric customer) { return customer;}
     }
 
     // Of course, could just call above directly, but demonstrates
@@ -88,7 +88,7 @@ public class CustomerFunctionalGeneric {
         return getEnabledCustomerField(new CustomerAddress());
     }
 
-    public static List<Customer> getEnabledCustomers() {
+    public static List<CustomerFunctionalGeneric> getEnabledCustomers() {
         return getEnabledCustomerField(new CustomerAsCustomer());
     }
 

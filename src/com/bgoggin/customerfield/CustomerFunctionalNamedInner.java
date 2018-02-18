@@ -21,7 +21,7 @@ public class CustomerFunctionalNamedInner {
     // however also can only handle returning String properties
     public static List<String> getEnabledCustomerField(ConversionFunction func) {
         ArrayList<String> outlist = new ArrayList<>();
-        for(Customer customer:Customer.allCustomers) {
+        for(CustomerFunctionalNamedInner customer:CustomerFunctionalNamedInner.allCustomers) {
             if(customer.enabled) {
                 outlist.add(func.call(customer));
             }
@@ -30,31 +30,31 @@ public class CustomerFunctionalNamedInner {
     }
 
     static private class CustomerName implements ConversionFunction {
-        public String call(Customer customer) {
+        public String call(CustomerFunctionalNamedInner customer) {
             return customer.name;
         }
     }
 
     static private class CustomerState implements ConversionFunction {
-        public String call(Customer customer) {
+        public String call(CustomerFunctionalNamedInner customer) {
             return customer.state;
         }
     }
 
     static private class CustomerPrimaryContact implements  ConversionFunction {
-        public String call(Customer customer) {
+        public String call(CustomerFunctionalNamedInner customer) {
             return customer.primaryContact;
         }
     }
 
     static private class CustomerDomain implements ConversionFunction {
-        public String call(Customer customer) {
+        public String call(CustomerFunctionalNamedInner customer) {
             return customer.domain;
         }
     }
 
     static private class CustomerAddress implements ConversionFunction {
-        public String call(Customer customer) {
+        public String call(CustomerFunctionalNamedInner customer) {
             return customer.address;
         }
     }
@@ -82,7 +82,7 @@ public class CustomerFunctionalNamedInner {
     }
 
     private interface ConversionFunction {
-        public String call(Customer customer);
+        public String call(CustomerFunctionalNamedInner customer);
     }
 }
 

@@ -20,7 +20,7 @@ public class CustomerIfElse {
     // strings right (though could use enumeration)
     public static List<String> getEnabledCustomerField(String field) {
         ArrayList<String> outlist = new ArrayList<>();
-        for(Customer customer:Customer.allCustomers) {
+        for(CustomerIfElse customer:CustomerIfElse.allCustomers) {
             if(customer.enabled) {
                 if(field.equalsIgnoreCase("name")) {
                     outlist.add(customer.name);
