@@ -12,7 +12,9 @@ public class CustomerFilterNoLoops { // Name is just to avoid collision, really 
     public String primaryContact = "";
     public String domain = "";
     public Boolean enabled = true;
-    public Contract contract = new Contract();
+    public Contract contract = new Contract(ContractUtil.parseDateString("2018=01-01"));
+
+
 
     public CustomerFilterNoLoops() {
     }
